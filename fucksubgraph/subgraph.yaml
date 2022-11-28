@@ -1,0 +1,38 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Contract
+    network: mainnet
+    source:
+      address: "0x6b7a87899490EcE95443e979cA9485CBE7E71522"
+      abi: Contract
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - LogAnySwapIn
+        - LogAnySwapOut
+        - LogAnySwapTradeTokensForNative
+        - LogAnySwapTradeTokensForTokens
+        - LogChangeMPC
+        - LogChangeRouter
+      abis:
+        - name: Contract
+          file: ./abis/Contract.json
+      eventHandlers:
+        - event: LogAnySwapIn(indexed bytes32,indexed address,indexed address,uint256,uint256,uint256)
+          handler: handleLogAnySwapIn
+        - event: LogAnySwapOut(indexed address,indexed address,indexed address,uint256,uint256,uint256)
+          handler: handleLogAnySwapOut
+        - event: LogAnySwapTradeTokensForNative(address[],indexed address,indexed address,uint256,uint256,uint256,uint256)
+          handler: handleLogAnySwapTradeTokensForNative
+        - event: LogAnySwapTradeTokensForTokens(address[],indexed address,indexed address,uint256,uint256,uint256,uint256)
+          handler: handleLogAnySwapTradeTokensForTokens
+        - event: LogChangeMPC(indexed address,indexed address,indexed uint256,uint256)
+          handler: handleLogChangeMPC
+        - event: LogChangeRouter(indexed address,indexed address,uint256)
+          handler: handleLogChangeRouter
+      file: ./src/contract.ts
