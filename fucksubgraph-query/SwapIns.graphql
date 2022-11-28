@@ -1,0 +1,11 @@
+{
+  logAnySwapIns(first: 5, orderBy: blockNumber, orderDirection: desc) {
+    id
+    blockNumber
+    blockTimestamp
+    transactionHash
+    txhash
+    token
+    to
+  }
+}

@@ -1,0 +1,11 @@
+{
+  logAnySwapOuts(first: 5, orderBy: blockNumber, orderDirection: desc) {
+    id
+    blockNumber
+    blockTimestamp
+    transactionHash
+    token
+    from
+    to
+  }
+}

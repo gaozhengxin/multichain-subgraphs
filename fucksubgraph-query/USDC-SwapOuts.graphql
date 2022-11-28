@@ -1,0 +1,11 @@
+query {
+  logAnySwapOuts(first: 5, orderBy: blockNumber, orderDirection: desc, where: { token: "0x22648c12acd87912ea1710357b1302c6a4154ebc" }) {
+    id
+    blockNumber
+    blockTimestamp
+    transactionHash
+    token
+    from
+    to
+  }
+}
